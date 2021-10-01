@@ -1,0 +1,221 @@
+DBMS EXERCISE : 1
+ 
+
+
+AIM: TO STUDY DATA DEFINITION AND DATA MANIPULATION COMMANDS.
+
+CREATING TABLES FOR EMPLOYEE,DEPARTMENT & PROJECT
+
+CREATE TABLE EMPLOYEE (FIRST_NAME VARCHAR(15),
+    MID_NAME CHAR(2),
+    LAST_NAME VARCHAR(15),
+    SSN_NUMBER CHAR(9),
+    BIRTHDAY DATE,
+    ADDRESS VARCHAR2(50),
+    SEX CHAR(1),
+    SALARY NUMBER(7),
+    SUPERVISOR_SSN CHAR(9),
+   DEPT_NUMBER NUMBER(5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE DEPARTMENT (
+    DEPT_NAME VARCHAR2(15),
+    DEPT_NO NUMBER(5),
+    MANAGERSSN CHAR(9),
+    MANAGESTARTDATE DATE);
+
+
+
+
+
+
+
+CREATE TABLE PROJECT(
+    PROJECTNAME VARCHAR2(15),
+    PROJECTNUMBER NUMBER(5),
+    PROJECTLOCATION VARCHAR2(15),
+DEPT_NO NUMBER(5));
+
+
+
+INSERTING DATA IN TABLES EMPLOYEE,DEPARTMENT & PROJECT.
+
+1. Insert the data given above in employee, department and project tables. 
+FOR TABLE EMPLOYEE
+
+INSERT INTO EMPLOYEE VALUES('DOUG',  ‘E’,  'GILBERT',  123,  '09-JUN-1968',  'CHENNAI',  'M',  80000,  NULL , 1);
+
+INSERT INTO EMPLOYEE VALUES('joyce',  NULL,  'PAN',  124,  '07-FEB-1973',  'VELLORE',  'F',  70000,  NULL , 1);
+INSERT INTO EMPLOYEE VALUES('Frankin','T',  'Wong',  125,  '08-DEC-1972',  'DELHI',  'M',  40000,  123 , 2);
+INSERT INTO EMPLOYEE VALUES('Jennifer','S',  'Wallace',  564,  '20-JUN-1983',  'CHENNAI',  'F',  43000,  123 , 2);
+INSERT INTO EMPLOYEE VALUES('JOHN','B',  'SMITH',  678,  '09-JAN-1987',  'MADURAI',  'M',  30000,  124 , 1);
+INSERT INTO EMPLOYEE VALUES('RAMESH','K',  'NARAYAN',  234,  '15-SEP-1985',  'BANGALORE',  'M',  38000,  124 , 3);
+
+
+
+
+
+
+
+FOR TABLE DEPARTMENT
+INSERT INTO DEPARTMENT VALUES('ADMINISTRATION',  2,  564,  '03-JAN-2012');
+INSERT INTO DEPARTMENT VALUES('HEADQUARTER',  1,  678,  '16-DEC-2014');
+INSERT INTO DEPARTMENT VALUES('FINANCE',  3,  234,  '18-MAY-2013');
+INSERT INTO DEPARTMENT VALUES('IT',  4,  123,  '12-JUN-2015');
+
+
+
+
+
+FOR TABLE PROJECT
+
+INSERT INTO PROJECT VALUES('ProjectA',  3388,  'DELHI',  1  );
+INSERT INTO PROJECT VALUES('ProjectB',  1945,  'HYDERABAD',  1  );
+INSERT INTO PROJECT VALUES('ProjectC',  6688,  'CHENNAI',  2 );
+INSERT INTO PROJECT VALUES('ProjectD',  2423,  'CHENNAI',  2 );
+INSERT INTO PROJECT VALUES('ProjectE',  7745,  'BANGALORE',  3);
+
+
+
+
+
+
+
+
+
+Get Employee name along with his SSN and Supervisor SSN.
+SELECT FIRST_NAME, MID_NAME, LAST_NAME, SSN_NUMBER, SUPERVISOR_SSN FROM EMPLOYEE;
+
+
+
+
+
+
+
+
+
+
+Retrieve the employee names whose bdate is ’20-JUNE-1983’.
+SELECT FIRST_NAME, LAST_NAME, BIRTHDAY FROM EMPLOYEE WHERE BIRTHDAY='20-JUNE-1983';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Get salaries of the employees without duplications.
+SELECT DISTINCT SALARY, FIRST_NAME, LAST_NAME FROM EMPLOYEE;
+
+
+
+Retrieve the MgrSSN, MgrStartDate of the manager of ‘FINANCE’ department.
+SELECT MANAGERSSN, MANAGESTARTDATE FROM DEPARTMENT WHERE DEPT_NAME='FINANCE';
+
+
+
+
+
+
+
+
+
+
+Change the department number of an employee having fname as ‘Joyce’ to 5
+UPDATE EMPLOYEE SET DEPT_NUMBER=5 WHERE FIRST_NAME='Joyce';
+
+
+
+
+
+
+Alter Table department add column ContactNo of NUMBER data type and insert values into this column only.
+ALTER TABLE DEPARTMENT ADD CONTACT_NUMBER NUMBER(10);
+
+
+
+
+
+Alter table department to modify the size of DepartmentPhoneNum.
+
+ALTER TABLE DEPARTMENT
+MODIFY CONTACT_NUMBER
+NUMBER(15);
+
+Modify the field name DepartmentPhoneNum of departments table to PhNo. 
+
+
+ALTER TABLE "DEPARTMENT"
+RENAME COLUMN "CONTACT_NUMBER" TO "PHNO";
+
+
+
+
+
+Rename Table Department as DEPT. 
+
+
+Alter Table department remove column PhNo. 
+
+ALTER TABLE DEPT DROP COLUMN PHNO;
+
+
+
+
+Create a table COPYOFDEPT as a copy of the table DEPT. 
+
+CREATE TABLE COPYOFDEPT AS SELECT * FROM DEPT;
+
+
+
+
+Delete all the rows from COPYOF DEPT table. 
+
+
+
+
+. Remove COPYOF DEPT table. 
+
+DROP TABLE COPYOFDEPT;
+
